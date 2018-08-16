@@ -32,7 +32,7 @@ fi
 
 echo
 # Create a file containing names of all relevant files
-${GNU_FIND} projects -regex '.*/src/main/.*\.java' -or -regex '.*/src/test/.*\.java' > files_to_check
+git diff origin/master --name-only | grep '.java$' > files_to_check
 
 # Run the check
 java -jar ${JAR} ${FORMAT_ARGS} @files_to_check && rm files_to_check \
